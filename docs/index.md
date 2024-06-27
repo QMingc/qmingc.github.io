@@ -4,7 +4,7 @@ layout: home
 
 hero:
   name: "qmingc|blog"
-  text: "qmingc's personal blog "
+  text: "qmingc's personal blog"
   tagline: My great project tagline
   actions:
     - theme: brand
