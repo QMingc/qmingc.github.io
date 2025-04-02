@@ -2,20 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on 来啦</title>
-    <link>http://localhost:1313/post/</link>
+    <link>https://example.org/post/</link>
     <description>Recent content in Posts on 来啦</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 02 Apr 2025 16:49:28 +0800</lastBuildDate><atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 02 Apr 2025 16:49:28 +0800</lastBuildDate><atom:link href="https://example.org/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Mybatis Plus引发的一级缓存一致性问题</title>
-      <link>http://localhost:1313/post/mybatis/mybatis-plus-cache-consistency/</link>
+      <link>https://example.org/post/mybatis/mybatis-plus-cache-consistency/</link>
       <pubDate>Wed, 02 Apr 2025 16:49:28 +0800</pubDate>
       
-      <guid>http://localhost:1313/post/mybatis/mybatis-plus-cache-consistency/</guid>
+      <guid>https://example.org/post/mybatis/mybatis-plus-cache-consistency/</guid>
       
-        <description>&lt;h1 id=&#34;mybatis-plus引发的一级缓存一致性问题&#34;&gt;Mybatis Plus引发的一级缓存一致性问题&lt;/h1&gt;
-&lt;h2 id=&#34;1现象&#34;&gt;1.现象&lt;/h2&gt;
+        <description>&lt;h2 id=&#34;1现象&#34;&gt;1.现象&lt;/h2&gt;
 &lt;p&gt;发现问题版本：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;mybatis plus：3.1.0&lt;/li&gt;
@@ -64,10 +63,10 @@
     
     <item>
       <title>Kafka源码剖析--副本迁移&amp;扩容</title>
-      <link>http://localhost:1313/post/kafka/kafka-reassignment/</link>
+      <link>https://example.org/post/kafka/kafka-reassignment/</link>
       <pubDate>Tue, 18 Jun 2024 17:59:59 +0800</pubDate>
       
-      <guid>http://localhost:1313/post/kafka/kafka-reassignment/</guid>
+      <guid>https://example.org/post/kafka/kafka-reassignment/</guid>
       
         <description>&lt;p&gt;基于Kafka 2.7.1版本：https://github.com/apache/kafka/tree/2.7.1
 阅读过程考虑以下问题点：&lt;/p&gt;
