@@ -1,0 +1,3 @@
+[submodule "qmcBlog/themes/ananke"]
+	path = qmcBlog/themes/ananke
+	url = https://github.com/theNewDynamic/gohugo-theme-ananke.git
