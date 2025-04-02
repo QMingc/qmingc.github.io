@@ -1,3 +1,6 @@
 [submodule "qmcBlog/themes/ananke"]
 	path = qmcBlog/themes/ananke
 	url = https://github.com/theNewDynamic/gohugo-theme-ananke.git
+[submodule "qmcBlog/themes/anatole"]
+	path = qmcBlog/themes/anatole
+	url = https://github.com/lxndrblz/anatole.git
