@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mybatis on 个人博客</title>
+    <link>https://example.org/tags/mybatis/</link>
+    <description>Recent content in Mybatis on 个人博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 02 Apr 2025 16:49:28 +0800</lastBuildDate><atom:link href="https://example.org/tags/mybatis/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mybatis Plus引发的一级缓存一致性问题</title>
+      <link>https://example.org/post/mybatis/mybatis-plus-cache-consistency/</link>
+      <pubDate>Wed, 02 Apr 2025 16:49:28 +0800</pubDate>
+      
+      <guid>https://example.org/post/mybatis/mybatis-plus-cache-consistency/</guid>
+      
+        <description>&lt;h2 id=&#34;1现象&#34;&gt;1.现象&lt;/h2&gt;
+&lt;p&gt;发现问题版本：&lt;/p&gt;</description>
+      
+    </item>
+    
+  </channel>
+</rss>

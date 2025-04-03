@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>来啦</title>
+    <title>个人博客</title>
     <link>https://example.org/</link>
-    <description>Recent content on 来啦</description>
+    <description>Recent content on 个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 02 Apr 2025 16:49:28 +0800</lastBuildDate><atom:link href="https://example.org/index.xml" rel="self" type="application/rss+xml" />
@@ -15,49 +15,7 @@
       <guid>https://example.org/post/mybatis/mybatis-plus-cache-consistency/</guid>
       
         <description>&lt;h2 id=&#34;1现象&#34;&gt;1.现象&lt;/h2&gt;
-&lt;p&gt;发现问题版本：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;mybatis plus：3.1.0&lt;/li&gt;
-&lt;li&gt;mybatis：3.5.0&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;在同一个事务中，通过mybatis plus执行批量操作更新数据（saveBatch、saveOrUpdateBatch、updateBatchById）后，执行查询的数据仍为更新之前的缓存数据。`&lt;/p&gt;
-&lt;p&gt;测试代码如下：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 输出结果：&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 测试色卡编号结果1===================0000&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 测试色卡编号结果1===================123&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 测试色卡编号结果2===================0000&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 测试色卡编号结果2===================0000（查询结果与实际不一致）&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;test&lt;/span&gt;() {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ((ColorCardTakeTaskServiceImpl) AopContext.&lt;span style=&#34;color:#a6e22e&#34;&gt;currentProxy&lt;/span&gt;()).&lt;span style=&#34;color:#a6e22e&#34;&gt;test1&lt;/span&gt;();
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ((ColorCardTakeTaskServiceImpl) AopContext.&lt;span style=&#34;color:#a6e22e&#34;&gt;currentProxy&lt;/span&gt;()).&lt;span style=&#34;color:#a6e22e&#34;&gt;test2&lt;/span&gt;();
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;@Transactional&lt;/span&gt;(rollbackFor &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Throwable.&lt;span style=&#34;color:#a6e22e&#34;&gt;class&lt;/span&gt;)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;test1&lt;/span&gt;() {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ColorCardTakeTaskEntity takeTaskEntity &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; colorCardTakeTaskRepository.&lt;span style=&#34;color:#a6e22e&#34;&gt;getById&lt;/span&gt;(1);
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    System.&lt;span style=&#34;color:#a6e22e&#34;&gt;out&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;println&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;测试色卡编号结果1===================&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; takeTaskEntity.&lt;span style=&#34;color:#a6e22e&#34;&gt;getCardNo&lt;/span&gt;());
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ColorCardTakeTaskEntity update &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; ColorCardTakeTaskEntity();
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    update.&lt;span style=&#34;color:#a6e22e&#34;&gt;setId&lt;/span&gt;(takeTaskEntity.&lt;span style=&#34;color:#a6e22e&#34;&gt;getId&lt;/span&gt;());
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    update.&lt;span style=&#34;color:#a6e22e&#34;&gt;setCardNo&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;123&amp;#34;&lt;/span&gt;);
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    colorCardTakeTaskRepository.&lt;span style=&#34;color:#a6e22e&#34;&gt;updateById&lt;/span&gt;(update);
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    takeTaskEntity &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; colorCardTakeTaskRepository.&lt;span style=&#34;color:#a6e22e&#34;&gt;getById&lt;/span&gt;(1);
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    System.&lt;span style=&#34;color:#a6e22e&#34;&gt;out&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;println&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;测试色卡编号结果1===================&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; takeTaskEntity.&lt;span style=&#34;color:#a6e22e&#34;&gt;getCardNo&lt;/span&gt;());
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;@Transactional&lt;/span&gt;(rollbackFor &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Throwable.&lt;span style=&#34;color:#a6e22e&#34;&gt;class&lt;/span&gt;)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;test2&lt;/span&gt;() {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ColorCardTakeTaskEntity takeTaskEntity &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; colorCardTakeTaskRepository.&lt;span style=&#34;color:#a6e22e&#34;&gt;getById&lt;/span&gt;(1);
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    System.&lt;span style=&#34;color:#a6e22e&#34;&gt;out&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;println&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;测试色卡编号结果2===================&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; takeTaskEntity.&lt;span style=&#34;color:#a6e22e&#34;&gt;getCardNo&lt;/span&gt;());
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ColorCardTakeTaskEntity update &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; ColorCardTakeTaskEntity();
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    update.&lt;span style=&#34;color:#a6e22e&#34;&gt;setId&lt;/span&gt;(takeTaskEntity.&lt;span style=&#34;color:#a6e22e&#34;&gt;getId&lt;/span&gt;());
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    update.&lt;span style=&#34;color:#a6e22e&#34;&gt;setCardNo&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;456&amp;#34;&lt;/span&gt;);
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    colorCardTakeTaskRepository.&lt;span style=&#34;color:#a6e22e&#34;&gt;updateBatchById&lt;/span&gt;(Lists.&lt;span style=&#34;color:#a6e22e&#34;&gt;newArrayList&lt;/span&gt;(update));
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    takeTaskEntity &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; colorCardTakeTaskRepository.&lt;span style=&#34;color:#a6e22e&#34;&gt;getById&lt;/span&gt;(1);
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    System.&lt;span style=&#34;color:#a6e22e&#34;&gt;out&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;println&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;测试色卡编号结果2===================&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; takeTaskEntity.&lt;span style=&#34;color:#a6e22e&#34;&gt;getCardNo&lt;/span&gt;());
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;2根因&#34;&gt;2.根因&lt;/h2&gt;
-&lt;p&gt;批量操作使用了不同的SqlSession&lt;/p&gt;</description>
+&lt;p&gt;发现问题版本：&lt;/p&gt;</description>
       
     </item>
     
@@ -69,94 +27,7 @@
       <guid>https://example.org/post/kafka/kafka-reassignment/</guid>
       
         <description>&lt;p&gt;基于Kafka 2.7.1版本：https://github.com/apache/kafka/tree/2.7.1
-阅读过程考虑以下问题点：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;副本迁移过程中出现宕机或其他问题，是否影响迁移&lt;/li&gt;
-&lt;li&gt;当大量副本同时完成迁移，是否在同一时间进行选举，同时选举是否会发生问题&lt;/li&gt;
-&lt;li&gt;当拉取到副本不存在的offset会如何处理
-kafka提供副本的重定义操作，通常在以下运维场景中用到：&lt;/li&gt;
-&lt;li&gt;副本分配不均匀，导致集群负载倾斜，使用副本重定义进行副本迁移&lt;/li&gt;
-&lt;li&gt;增加&amp;amp;减少副本数量&lt;/li&gt;
-&lt;li&gt;broker删除或新增，需要进行副本迁移
-此功能下文统称副本「迁移」&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;1大致流程&#34;&gt;1.大致流程&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;1.通过AdminClient发送副本迁移请求&lt;/li&gt;
-&lt;li&gt;2.controller接收请求后，向所有副本（包括原有副本和新增加的副本）broker发送ApiKeys.LEADER_AND_ISR、ApiKeys.UPDATE_METADATA请求，并更新leader代数&lt;/li&gt;
-&lt;li&gt;3.副本broker接收ApiKeys.LEADER_AND_ISR请求后，加入AR副本，开启新副本同步线程&lt;/li&gt;
-&lt;li&gt;4.副本持续同步，向leader拉取数据，同步过程中，在Partition#updateFollowerFetchState方法判断是否可加入isr，若满足加入isr条件，将当前副本加入isr（修改zk节点状态）&lt;/li&gt;
-&lt;li&gt;5.controller接收到zk节点状态变化，开始处理后续的迁移工作：
-&lt;ul&gt;
-&lt;li&gt;5.1.若当前leader已不是可用副本，重新选举leader，并向broker发送选举结果&lt;/li&gt;
-&lt;li&gt;5.2.向broker下线并删除不再需要的副本&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;6.完成&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;2代码细节&#34;&gt;2.代码细节&lt;/h3&gt;
-&lt;h4 id=&#34;21副本迁移开始&#34;&gt;2.1副本迁移开始&lt;/h4&gt;
-&lt;h5 id=&#34;创建迁移任务&#34;&gt;创建迁移任务&lt;/h5&gt;
-&lt;p&gt;通过AdminClient#alterPartitionReassignments向controller发送副本迁移请求【推荐，另外还可通过往zk添加节点数据来触发controller副本迁移】&lt;/p&gt;
-&lt;h5 id=&#34;controller接收请求&#34;&gt;controller接收请求&lt;/h5&gt;
-&lt;p&gt;KafkaApi#handle负责处理所有网络请求，controller通过KafkaApi#handleAlterPartitionReassignmentsRequest处理「副本迁移」请求
-controller接收到请求后，发布副本迁移&amp;amp;扩容异步事件（事件类型「ApiPartitionReassignment」），进行异步处理
-事件发布：KafkaController#alterPartitionReassignments
-事件处理：KafkaController#process
-&lt;img src=&#34;controller-process.png&#34; alt=&#34;img.png&#34;&gt;&lt;/p&gt;
-&lt;h5 id=&#34;controller异步处理逻辑&#34;&gt;controller异步处理逻辑&lt;/h5&gt;
-&lt;p&gt;在KafkaController#processApiPartitionReassignment（图2-1）中开始处理逻辑，该方法中首先对迁移的副本进行一些有效性检查，过滤掉无效的副本broker id。
-在对迁移副本做完检查后，调用maybeTriggerPartitionReassignment（图2-2）和onPartitionReassignment（图2-3）方法来触发迁移。
-onPartitionReassignment是副本迁移中关键方法，方法的主体分为两部分：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;开始迁移：包含两个动作，首先更新所有副本（包括当前副本，和新增加或迁移的副本）的leader代数（不修改leader），并向副本发送ApiKeys.LEADER_AND_ISR和ApiKeys.UPDATE_METADATA请求，将新副本加入AR列表，其次将新加入AR列表的副本状态调整设为NewReplica（发送ApiKeys.LEADER_AND_ISR请求），自此，新副本接收ApiKeys.LEADER_AND_ISR后，开启副本同步线程（2.2中详细介绍）&lt;/li&gt;
-&lt;li&gt;迁移结束后的动作：在副本同步完成，并申请加入到了isr列表后，会触发迁移后的动作（2.3中详细介绍），主要包含以下动作：
-&lt;ul&gt;
-&lt;li&gt;1.将新的副本上线，并首先将内存中旧的副本集换为新的副本集&lt;/li&gt;
-&lt;li&gt;2.判断leader所在副本是否还是可用副本，非可用则进行新的副本选举&lt;/li&gt;
-&lt;li&gt;3.停止并下线旧的副本&lt;/li&gt;
-&lt;li&gt;4.通知broker更新元数据
-&lt;img src=&#34;img_1.png&#34; alt=&#34;img_1.png&#34;&gt;&lt;img src=&#34;img_2.png&#34; alt=&#34;img_2.png&#34;&gt;&lt;img src=&#34;img_3.png&#34; alt=&#34;img_3.png&#34;&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&#34;22新副本加入isr逻辑&#34;&gt;2.2新副本加入isr逻辑&lt;/h4&gt;
-&lt;pre&gt;&lt;code&gt;  副本同步&amp;amp;加入isr逻辑涉及的几个类：
-  AbstractFetcherManager：同步线程管理的抽象类
-  ReplicaFetcherManager：同步线程管理，由此创建同步线程
-  ReplicaAlterLogDirsManager：本地拉取线程管理
-  AbstractFetcherThread：同步线程的抽象类，包含主体逻辑，抽象了部分方法
-  ReplicaFetcherThread：同步线程的实现类
-  ReplicaAlterLogDirsThread：本地拉取线程
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h5 id=&#34;开启同步线程&#34;&gt;开启同步线程&lt;/h5&gt;
-&lt;p&gt;在2.1中涉及到新副本接收到ApiKeys.LEADER_AND_ISR请求后，开启同步线程。
-首先在副本接收到ApiKeys.LEADER_AND_ISR请求后，在KafkaApis#handleLeaderAndIsrRequest方法中处理请求，并在方法中调用了ReplicaManager#becomeLeaderOrFollower执行具体逻辑，在becomeLeaderOrFollower逻辑中，makeFollowers-&amp;gt;AbstractFetcherManager#addFetcherForPartitions开始了副本同步线程。
-&lt;img src=&#34;img_4.png&#34; alt=&#34;img_4.png&#34;&gt;
-&lt;img src=&#34;img_5.png&#34; alt=&#34;img_5.png&#34;&gt;&lt;/p&gt;
-&lt;h5 id=&#34;副本同步&#34;&gt;副本同步&lt;/h5&gt;
-&lt;p&gt;在第一步创建同步线程中具体的线程类是ReplicaFetcherThread（继承自AbstractFetcherThread）。线程start后，循环执行AbstractFetcherThread#doWork方法。doWork往下追踪：doWork-&amp;gt;maybeFetch-&amp;gt;processFetchRequest-&amp;gt;fetchFromLeader。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;fetchFromLeader从leader中拉取消息&lt;/li&gt;
-&lt;li&gt;processPartitionData将消息写入日志段中，并更新高水位
-&lt;img src=&#34;img_6.png&#34; alt=&#34;img_6.png&#34;&gt;
-&lt;img src=&#34;img_7.png&#34; alt=&#34;img_7.png&#34;&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h5 id=&#34;加入isr&#34;&gt;加入isr&lt;/h5&gt;
-&lt;p&gt;在第1步的becomeLeaderOrFollower逻辑中，除了创建ReplicaFetcherThread线程，另外通过ReplicaAlterLogDirsManager创建了ReplicaAlterLogDirsThread线程，这个线程启动后会开始持续拉取本地的消息，并判断是否需要加入isr。
-加入isr的逻辑链（对应下图2-8～2-12）：
-ReplicaAlterLogDirsThread#fetchFromLeader-&amp;gt;ReplicaManager#fetchMessages-&amp;gt;ReplicaManager#updateFollowerFetchState-&amp;gt;Partition#updateFollowerFetchState-&amp;gt;Partition#maybeExpandIsr
-&lt;img src=&#34;img_8.png&#34; alt=&#34;img_8.png&#34;&gt;&lt;img src=&#34;img_9.png&#34; alt=&#34;img_9.png&#34;&gt;&lt;img src=&#34;img_10.png&#34; alt=&#34;img_10.png&#34;&gt;&lt;img src=&#34;img_11.png&#34; alt=&#34;img_11.png&#34;&gt;&lt;img src=&#34;img_12.png&#34; alt=&#34;img_12.png&#34;&gt;&lt;/p&gt;
-&lt;h4 id=&#34;23-迁移后的选举逻辑&#34;&gt;2.3 迁移后的选举逻辑&lt;/h4&gt;
-&lt;h5 id=&#34;zk节点监听注册&#34;&gt;zk节点监听注册&lt;/h5&gt;
-&lt;p&gt;在副本加入isr后，会讲分区状态写入zk，当controller接收到zk节点信息变更后，执行迁移的后续动作。
-首先controller在切换或启动时，会注册zk节点监听。当监听到变更时，会发布IsrChangeNotificationHandler事件，通过异步的方式处理后续逻辑
-&lt;img src=&#34;img_13.png&#34; alt=&#34;img_13.png&#34;&gt;
-&lt;img src=&#34;img_14.png&#34; alt=&#34;img_14.png&#34;&gt;&lt;/p&gt;
-&lt;h5 id=&#34;isr变更leader副本选举&#34;&gt;isr变更，leader副本选举&lt;/h5&gt;
-&lt;p&gt;前文介绍到这部分动作包括了上线新副本、选举新leader、删除和下限旧副本，在这我们探讨一下选举的逻辑。
-首先在controller接收到IsrChangeNotificationHandler事件后，经过processIsrChangeNotification-&amp;gt;maybeCompleteReassignment-&amp;gt;onPartitionReassignment进入到下图2-14逻辑，该逻辑为副本迁移的重要方法。
-其中会调用到moveReassignedPartitionLeaderIfRequired，该方法负责处理迁移后的选举相关逻辑，方法逻辑中主要包含三个分支：&lt;/p&gt;</description>
+阅读过程考虑以下问题点：&lt;/p&gt;</description>
       
     </item>
     

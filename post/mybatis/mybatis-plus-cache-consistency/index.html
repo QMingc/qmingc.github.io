@@ -9,7 +9,7 @@
 ><head>
   <meta charset="utf-8" />
   <title>
-    Qiu
+    Mr Qiu
         |
         Mybatis Plus引发的一级缓存一致性问题
       
@@ -19,10 +19,12 @@
   </title>
 
   <meta name="generator" content="Hugo 0.145.0"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <meta name="author" content="Qiu" />
+  <meta name="author" content="Mr Qiu" />
   <meta
     name="description"
-    content="Call me Jane"
+    content="Mr Qiu fine,欢迎来到我无聊的博客
+这里记录了一些乱七八糟的东西
+"
   />
   
   
@@ -49,32 +51,32 @@
   
   <link
     rel="stylesheet"
-    href="/fontawesome/css/fontawesome.min.137b1cf3cea9a8adb7884343a9a5ddddf4280f59153f74dc782fb7f7bf0d0519.css"
-    integrity="sha256-E3sc886pqK23iENDqaXd3fQoD1kVP3TceC&#43;3978NBRk="
+    href="/fontawesome/css/fontawesome.min.10cb17328b3207590ce3d89fb482e7cd6937d8138cef2059c69cabd65ab7d6c6.css"
+    integrity="sha256-EMsXMosyB1kM49iftILnzWk32BOM7yBZxpyr1lq31sY="
     crossorigin="anonymous"
     type="text/css"
   />
   
   <link
     rel="stylesheet"
-    href="/fontawesome/css/solid.min.e65dc5b48fb5f39b142360c57c3a215744c94e56c755c929cc3e88fe12aab4d3.css"
-    integrity="sha256-5l3FtI&#43;185sUI2DFfDohV0TJTlbHVckpzD6I/hKqtNM="
+    href="/fontawesome/css/solid.min.7aa4d559d5fadcfed666b5679be54d0dbbcf6a0542742319765b253d2797cc44.css"
+    integrity="sha256-eqTVWdX63P7WZrVnm&#43;VNDbvPagVCdCMZdlslPSeXzEQ="
     crossorigin="anonymous"
     type="text/css"
   />
   
   <link
     rel="stylesheet"
-    href="/fontawesome/css/regular.min.6f4f16d58da1c82c0c3a3436e021a3d39b4742f741192c546e73e947eacfd92f.css"
-    integrity="sha256-b08W1Y2hyCwMOjQ24CGj05tHQvdBGSxUbnPpR&#43;rP2S8="
+    href="/fontawesome/css/regular.min.a699c3ab02229020e2d51dfe6c9a4cc556fd7781edbc166e2af9d0db9d5c66ce.css"
+    integrity="sha256-ppnDqwIikCDi1R3&#43;bJpMxVb9d4HtvBZuKvnQ251cZs4="
     crossorigin="anonymous"
     type="text/css"
   />
   
   <link
     rel="stylesheet"
-    href="/fontawesome/css/brands.min.e10425ad768bc98ff1fb272a0ac8420f9d1ba22f0612c08ff1010c95080ffe7e.css"
-    integrity="sha256-4QQlrXaLyY/x&#43;ycqCshCD50boi8GEsCP8QEMlQgP/n4="
+    href="/fontawesome/css/brands.min.1d88b60c86c4bb253fa4d4c085d27f7ee1f6eca544f7b50b227a2e63fbcfbaaa.css"
+    integrity="sha256-HYi2DIbEuyU/pNTAhdJ/fuH27KVE97ULInouY/vPuqo="
     crossorigin="anonymous"
     type="text/css"
   />
@@ -117,26 +119,21 @@
   
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Mybatis Plus引发的一级缓存一致性问题">
-  <meta name="twitter:description" content="1.现象 发现问题版本：
-mybatis plus：3.1.0 mybatis：3.5.0 在同一个事务中，通过mybatis plus执行批量操作更新数据（saveBatch、saveOrUpdateBatch、updateBatchById）后，执行查询的数据仍为更新之前的缓存数据。`
-测试代码如下：
-// 输出结果： // 测试色卡编号结果1===================0000 // 测试色卡编号结果1===================123 // 测试色卡编号结果2===================0000 // 测试色卡编号结果2===================0000（查询结果与实际不一致） public void test() { ((ColorCardTakeTaskServiceImpl) AopContext.currentProxy()).test1(); ((ColorCardTakeTaskServiceImpl) AopContext.currentProxy()).test2(); } @Transactional(rollbackFor = Throwable.class) public void test1() { ColorCardTakeTaskEntity takeTaskEntity = colorCardTakeTaskRepository.getById(1); System.out.println(&#34;测试色卡编号结果1===================&#34; &#43; takeTaskEntity.getCardNo()); ColorCardTakeTaskEntity update = new ColorCardTakeTaskEntity(); update.setId(takeTaskEntity.getId()); update.setCardNo(&#34;123&#34;); colorCardTakeTaskRepository.updateById(update); takeTaskEntity = colorCardTakeTaskRepository.getById(1); System.out.println(&#34;测试色卡编号结果1===================&#34; &#43; takeTaskEntity.getCardNo()); } @Transactional(rollbackFor = Throwable.class) public void test2() { ColorCardTakeTaskEntity takeTaskEntity = colorCardTakeTaskRepository.getById(1); System.out.println(&#34;测试色卡编号结果2===================&#34; &#43; takeTaskEntity.getCardNo()); ColorCardTakeTaskEntity update = new ColorCardTakeTaskEntity(); update.setId(takeTaskEntity.getId()); update.setCardNo(&#34;456&#34;); colorCardTakeTaskRepository.updateBatchById(Lists.newArrayList(update)); takeTaskEntity = colorCardTakeTaskRepository.getById(1); System.out.println(&#34;测试色卡编号结果2===================&#34; &#43; takeTaskEntity.getCardNo()); } 2.根因 批量操作使用了不同的SqlSession">
+  <meta name="twitter:description" content="1.现象 发现问题版本：">
 
 
 
   
   <meta property="og:url" content="https://example.org/post/mybatis/mybatis-plus-cache-consistency/">
-  <meta property="og:site_name" content="来啦">
+  <meta property="og:site_name" content="个人博客">
   <meta property="og:title" content="Mybatis Plus引发的一级缓存一致性问题">
-  <meta property="og:description" content="1.现象 发现问题版本：
-mybatis plus：3.1.0 mybatis：3.5.0 在同一个事务中，通过mybatis plus执行批量操作更新数据（saveBatch、saveOrUpdateBatch、updateBatchById）后，执行查询的数据仍为更新之前的缓存数据。`
-测试代码如下：
-// 输出结果： // 测试色卡编号结果1===================0000 // 测试色卡编号结果1===================123 // 测试色卡编号结果2===================0000 // 测试色卡编号结果2===================0000（查询结果与实际不一致） public void test() { ((ColorCardTakeTaskServiceImpl) AopContext.currentProxy()).test1(); ((ColorCardTakeTaskServiceImpl) AopContext.currentProxy()).test2(); } @Transactional(rollbackFor = Throwable.class) public void test1() { ColorCardTakeTaskEntity takeTaskEntity = colorCardTakeTaskRepository.getById(1); System.out.println(&#34;测试色卡编号结果1===================&#34; &#43; takeTaskEntity.getCardNo()); ColorCardTakeTaskEntity update = new ColorCardTakeTaskEntity(); update.setId(takeTaskEntity.getId()); update.setCardNo(&#34;123&#34;); colorCardTakeTaskRepository.updateById(update); takeTaskEntity = colorCardTakeTaskRepository.getById(1); System.out.println(&#34;测试色卡编号结果1===================&#34; &#43; takeTaskEntity.getCardNo()); } @Transactional(rollbackFor = Throwable.class) public void test2() { ColorCardTakeTaskEntity takeTaskEntity = colorCardTakeTaskRepository.getById(1); System.out.println(&#34;测试色卡编号结果2===================&#34; &#43; takeTaskEntity.getCardNo()); ColorCardTakeTaskEntity update = new ColorCardTakeTaskEntity(); update.setId(takeTaskEntity.getId()); update.setCardNo(&#34;456&#34;); colorCardTakeTaskRepository.updateBatchById(Lists.newArrayList(update)); takeTaskEntity = colorCardTakeTaskRepository.getById(1); System.out.println(&#34;测试色卡编号结果2===================&#34; &#43; takeTaskEntity.getCardNo()); } 2.根因 批量操作使用了不同的SqlSession">
+  <meta property="og:description" content="1.现象 发现问题版本：">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="post">
     <meta property="article:published_time" content="2025-04-02T16:49:28+08:00">
     <meta property="article:modified_time" content="2025-04-02T16:49:28+08:00">
+    <meta property="article:tag" content="Mybatis">
 
 
 
@@ -154,7 +151,7 @@ mybatis plus：3.1.0 mybatis：3.5.0 在同一个事务中，通过mybatis plus�
         "alternativeHeadline": "",
         "description": "
       
-        \u003ch2 id=\u00221现象\u0022\u003e1.现象\u003c\/h2\u003e\n\u003cp\u003e发现问题版本：\u003c\/p\u003e\n\u003cul\u003e\n\u003cli\u003emybatis plus：3.1.0\u003c\/li\u003e\n\u003cli\u003emybatis：3.5.0\u003c\/li\u003e\n\u003c\/ul\u003e\n\u003cp\u003e在同一个事务中，通过mybatis plus执行批量操作更新数据（saveBatch、saveOrUpdateBatch、updateBatchById）后，执行查询的数据仍为更新之前的缓存数据。\u0060\u003c\/p\u003e\n\u003cp\u003e测试代码如下：\u003c\/p\u003e\n\u003cdiv class=\u0022highlight\u0022\u003e\u003cpre tabindex=\u00220\u0022 style=\u0022color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;\u0022\u003e\u003ccode class=\u0022language-java\u0022 data-lang=\u0022java\u0022\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\u003cspan style=\u0022color:#75715e\u0022\u003e\/\/ 输出结果：\u003c\/span\u003e\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\u003cspan style=\u0022color:#75715e\u0022\u003e\/\/ 测试色卡编号结果1===================0000\u003c\/span\u003e\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\u003cspan style=\u0022color:#75715e\u0022\u003e\/\/ 测试色卡编号结果1===================123\u003c\/span\u003e\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\u003cspan style=\u0022color:#75715e\u0022\u003e\/\/ 测试色卡编号结果2===================0000\u003c\/span\u003e\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\u003cspan style=\u0022color:#75715e\u0022\u003e\/\/ 测试色卡编号结果2===================0000（查询结果与实际不一致）\u003c\/span\u003e\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\u003cspan style=\u0022color:#66d9ef\u0022\u003epublic\u003c\/span\u003e \u003cspan style=\u0022color:#66d9ef\u0022\u003evoid\u003c\/span\u003e \u003cspan style=\u0022color:#a6e22e\u0022\u003etest\u003c\/span\u003e() {\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e    ((ColorCardTakeTaskServiceImpl) AopContext.\u003cspan style=\u0022color:#a6e22e\u0022\u003ecurrentProxy\u003c\/span\u003e()).\u003cspan style=\u0022color:#a6e22e\u0022\u003etest1\u003c\/span\u003e();\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e    ((ColorCardTakeTaskServiceImpl) AopContext.\u003cspan style=\u0022color:#a6e22e\u0022\u003ecurrentProxy\u003c\/span\u003e()).\u003cspan style=\u0022color:#a6e22e\u0022\u003etest2\u003c\/span\u003e();\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e}\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\u003cspan style=\u0022color:#a6e22e\u0022\u003e@Transactional\u003c\/span\u003e(rollbackFor \u003cspan style=\u0022color:#f92672\u0022\u003e=\u003c\/span\u003e Throwable.\u003cspan style=\u0022color:#a6e22e\u0022\u003eclass\u003c\/span\u003e)\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\u003cspan style=\u0022color:#66d9ef\u0022\u003epublic\u003c\/span\u003e \u003cspan style=\u0022color:#66d9ef\u0022\u003evoid\u003c\/span\u003e \u003cspan style=\u0022color:#a6e22e\u0022\u003etest1\u003c\/span\u003e() {\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e    ColorCardTakeTaskEntity takeTaskEntity \u003cspan style=\u0022color:#f92672\u0022\u003e=\u003c\/span\u003e colorCardTakeTaskRepository.\u003cspan style=\u0022color:#a6e22e\u0022\u003egetById\u003c\/span\u003e(1);\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e    System.\u003cspan style=\u0022color:#a6e22e\u0022\u003eout\u003c\/span\u003e.\u003cspan style=\u0022color:#a6e22e\u0022\u003eprintln\u003c\/span\u003e(\u003cspan style=\u0022color:#e6db74\u0022\u003e\u0026#34;测试色卡编号结果1===================\u0026#34;\u003c\/span\u003e \u003cspan style=\u0022color:#f92672\u0022\u003e\u002b\u003c\/span\u003e takeTaskEntity.\u003cspan style=\u0022color:#a6e22e\u0022\u003egetCardNo\u003c\/span\u003e());\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e    ColorCardTakeTaskEntity update \u003cspan style=\u0022color:#f92672\u0022\u003e=\u003c\/span\u003e \u003cspan style=\u0022color:#66d9ef\u0022\u003enew\u003c\/span\u003e ColorCardTakeTaskEntity();\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e    update.\u003cspan style=\u0022color:#a6e22e\u0022\u003esetId\u003c\/span\u003e(takeTaskEntity.\u003cspan style=\u0022color:#a6e22e\u0022\u003egetId\u003c\/span\u003e());\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e    update.\u003cspan style=\u0022color:#a6e22e\u0022\u003esetCardNo\u003c\/span\u003e(\u003cspan style=\u0022color:#e6db74\u0022\u003e\u0026#34;123\u0026#34;\u003c\/span\u003e);\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e    colorCardTakeTaskRepository.\u003cspan style=\u0022color:#a6e22e\u0022\u003eupdateById\u003c\/span\u003e(update);\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e    takeTaskEntity \u003cspan style=\u0022color:#f92672\u0022\u003e=\u003c\/span\u003e colorCardTakeTaskRepository.\u003cspan style=\u0022color:#a6e22e\u0022\u003egetById\u003c\/span\u003e(1);\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e    System.\u003cspan style=\u0022color:#a6e22e\u0022\u003eout\u003c\/span\u003e.\u003cspan style=\u0022color:#a6e22e\u0022\u003eprintln\u003c\/span\u003e(\u003cspan style=\u0022color:#e6db74\u0022\u003e\u0026#34;测试色卡编号结果1===================\u0026#34;\u003c\/span\u003e \u003cspan style=\u0022color:#f92672\u0022\u003e\u002b\u003c\/span\u003e takeTaskEntity.\u003cspan style=\u0022color:#a6e22e\u0022\u003egetCardNo\u003c\/span\u003e());\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e}\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\u003cspan style=\u0022color:#a6e22e\u0022\u003e@Transactional\u003c\/span\u003e(rollbackFor \u003cspan style=\u0022color:#f92672\u0022\u003e=\u003c\/span\u003e Throwable.\u003cspan style=\u0022color:#a6e22e\u0022\u003eclass\u003c\/span\u003e)\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\u003cspan style=\u0022color:#66d9ef\u0022\u003epublic\u003c\/span\u003e \u003cspan style=\u0022color:#66d9ef\u0022\u003evoid\u003c\/span\u003e \u003cspan style=\u0022color:#a6e22e\u0022\u003etest2\u003c\/span\u003e() {\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e    ColorCardTakeTaskEntity takeTaskEntity \u003cspan style=\u0022color:#f92672\u0022\u003e=\u003c\/span\u003e colorCardTakeTaskRepository.\u003cspan style=\u0022color:#a6e22e\u0022\u003egetById\u003c\/span\u003e(1);\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e    System.\u003cspan style=\u0022color:#a6e22e\u0022\u003eout\u003c\/span\u003e.\u003cspan style=\u0022color:#a6e22e\u0022\u003eprintln\u003c\/span\u003e(\u003cspan style=\u0022color:#e6db74\u0022\u003e\u0026#34;测试色卡编号结果2===================\u0026#34;\u003c\/span\u003e \u003cspan style=\u0022color:#f92672\u0022\u003e\u002b\u003c\/span\u003e takeTaskEntity.\u003cspan style=\u0022color:#a6e22e\u0022\u003egetCardNo\u003c\/span\u003e());\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e    ColorCardTakeTaskEntity update \u003cspan style=\u0022color:#f92672\u0022\u003e=\u003c\/span\u003e \u003cspan style=\u0022color:#66d9ef\u0022\u003enew\u003c\/span\u003e ColorCardTakeTaskEntity();\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e    update.\u003cspan style=\u0022color:#a6e22e\u0022\u003esetId\u003c\/span\u003e(takeTaskEntity.\u003cspan style=\u0022color:#a6e22e\u0022\u003egetId\u003c\/span\u003e());\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e    update.\u003cspan style=\u0022color:#a6e22e\u0022\u003esetCardNo\u003c\/span\u003e(\u003cspan style=\u0022color:#e6db74\u0022\u003e\u0026#34;456\u0026#34;\u003c\/span\u003e);\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e    colorCardTakeTaskRepository.\u003cspan style=\u0022color:#a6e22e\u0022\u003eupdateBatchById\u003c\/span\u003e(Lists.\u003cspan style=\u0022color:#a6e22e\u0022\u003enewArrayList\u003c\/span\u003e(update));\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e    takeTaskEntity \u003cspan style=\u0022color:#f92672\u0022\u003e=\u003c\/span\u003e colorCardTakeTaskRepository.\u003cspan style=\u0022color:#a6e22e\u0022\u003egetById\u003c\/span\u003e(1);\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e    System.\u003cspan style=\u0022color:#a6e22e\u0022\u003eout\u003c\/span\u003e.\u003cspan style=\u0022color:#a6e22e\u0022\u003eprintln\u003c\/span\u003e(\u003cspan style=\u0022color:#e6db74\u0022\u003e\u0026#34;测试色卡编号结果2===================\u0026#34;\u003c\/span\u003e \u003cspan style=\u0022color:#f92672\u0022\u003e\u002b\u003c\/span\u003e takeTaskEntity.\u003cspan style=\u0022color:#a6e22e\u0022\u003egetCardNo\u003c\/span\u003e());\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e}\n\u003c\/span\u003e\u003c\/span\u003e\u003c\/code\u003e\u003c\/pre\u003e\u003c\/div\u003e\u003ch2 id=\u00222根因\u0022\u003e2.根因\u003c\/h2\u003e\n\u003cp\u003e批量操作使用了不同的SqlSession\u003c\/p\u003e
+        \u003ch2 id=\u00221现象\u0022\u003e1.现象\u003c\/h2\u003e\n\u003cp\u003e发现问题版本：\u003c\/p\u003e
 
 
       
@@ -169,19 +166,19 @@ mybatis plus：3.1.0 mybatis：3.5.0 在同一个事务中，通过mybatis plus�
         },
         "author" : {
             "@type": "Person",
-            "name": "Qiu"
+            "name": "qmingc"
         },
         "creator" : {
             "@type": "Person",
-            "name": "Qiu"
+            "name": "qmingc"
         },
         "accountablePerson" : {
             "@type": "Person",
-            "name": "Qiu"
+            "name": "qmingc"
         },
         "copyrightHolder" : {
             "@type": "Person",
-            "name": "Qiu"
+            "name": "qmingc"
         },
         "copyrightYear" : "2025",
         "dateCreated": "2025-04-02T16:49:28.00Z",
@@ -189,7 +186,7 @@ mybatis plus：3.1.0 mybatis：3.5.0 在同一个事务中，通过mybatis plus�
         "dateModified": "2025-04-02T16:49:28.00Z",
         "publisher":{
             "@type":"Organization",
-            "name": "Qiu",
+            "name": "qmingc",
             "url": "https://example.org/",
             "logo": {
                 "@type": "ImageObject",
@@ -206,7 +203,11 @@ mybatis plus：3.1.0 mybatis：3.5.0 在同一个事务中，通过mybatis plus�
         "url" : "https:\/\/example.org\/post\/mybatis\/mybatis-plus-cache-consistency\/",
         "wordCount" : "100",
         "genre" : [ ],
-        "keywords" : [ ]
+        "keywords" : [ 
+      
+      "mybatis"
+
+    ]
     }
   </script>
 
@@ -232,11 +233,11 @@ mybatis plus：3.1.0 mybatis：3.5.0 在同一个事务中，通过mybatis plus�
       />
       
         <div class="sidebar__introduction-title">
-          <a href="/">I&#39;m Jane Doe</a>
+          <a href="/">I&#39;m Qiu</a>
         </div>
       
       <div class="sidebar__introduction-description">
-        <p>Call me Jane</p>
+        <p>Mr Qiu fine,欢迎来到我无聊的博客<br />这里记录了一些乱七八糟的东西<br /></p>
       </div>
     </div>
     <ul class="sidebar__list">
@@ -247,7 +248,7 @@ mybatis plus：3.1.0 mybatis：3.5.0 在同一个事务中，通过mybatis plus�
     <li class="footer__item">
       &copy;
       
-        Qiu
+        Mr Qiu
         2025
       
     </li>
@@ -344,7 +345,7 @@ mybatis plus：3.1.0 mybatis：3.5.0 在同一个事务中，通过mybatis plus�
             <span class="post__meta-text"
               >
                 
-                  Wed, Apr 2, 2025
+                  6月2日 2025
                 
 
               
@@ -355,7 +356,15 @@ mybatis plus：3.1.0 mybatis：3.5.0 在同一个事务中，通过mybatis plus�
             <span class="post__meta-text">One-minute read</span>
           </li>
         </ul>
-      <h2 id="1现象">1.现象</h2>
+      <h3></h3>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1现象">1.现象</a></li>
+    <li><a href="#2根因">2.根因</a></li>
+    <li><a href="#3解决">3.解决</a></li>
+  </ul>
+</nav>
+<h2 id="1现象">1.现象</h2>
 <p>发现问题版本：</p>
 <ul>
 <li>mybatis plus：3.1.0</li>
@@ -417,6 +426,10 @@ mybatis plus：3.1.0 mybatis：3.5.0 在同一个事务中，通过mybatis plus�
       
 
       
+        <span><a class="tag" href="/tags/mybatis/">mybatis</a></span>
+
+
+      
     </div>
 
     
@@ -428,7 +441,7 @@ mybatis plus：3.1.0 mybatis：3.5.0 在同一个事务中，通过mybatis plus�
     <li class="footer__item">
       &copy;
       
-        Qiu
+        Mr Qiu
         2025
       
     </li>
