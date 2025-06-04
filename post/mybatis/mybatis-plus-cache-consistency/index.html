@@ -345,7 +345,7 @@
             <span class="post__meta-text"
               >
                 
-                  6月2日 2025
+                  Wed, Apr 2, 2025
                 
 
               
@@ -379,32 +379,32 @@
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// 测试色卡编号结果2===================0000（查询结果与实际不一致）</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">test</span>() {
-</span></span><span style="display:flex;"><span>    ((ColorCardTakeTaskServiceImpl) AopContext.<span style="color:#a6e22e">currentProxy</span>()).<span style="color:#a6e22e">test1</span>();
-</span></span><span style="display:flex;"><span>    ((ColorCardTakeTaskServiceImpl) AopContext.<span style="color:#a6e22e">currentProxy</span>()).<span style="color:#a6e22e">test2</span>();
+</span></span><span style="display:flex;"><span>    ((CurServiceImpl) AopContext.<span style="color:#a6e22e">currentProxy</span>()).<span style="color:#a6e22e">test1</span>();
+</span></span><span style="display:flex;"><span>    ((CurServiceImpl) AopContext.<span style="color:#a6e22e">currentProxy</span>()).<span style="color:#a6e22e">test2</span>();
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Transactional</span>(rollbackFor <span style="color:#f92672">=</span> Throwable.<span style="color:#a6e22e">class</span>)
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">test1</span>() {
-</span></span><span style="display:flex;"><span>    ColorCardTakeTaskEntity takeTaskEntity <span style="color:#f92672">=</span> colorCardTakeTaskRepository.<span style="color:#a6e22e">getById</span>(1);
-</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;测试色卡编号结果1===================&#34;</span> <span style="color:#f92672">+</span> takeTaskEntity.<span style="color:#a6e22e">getCardNo</span>());
-</span></span><span style="display:flex;"><span>    ColorCardTakeTaskEntity update <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ColorCardTakeTaskEntity();
-</span></span><span style="display:flex;"><span>    update.<span style="color:#a6e22e">setId</span>(takeTaskEntity.<span style="color:#a6e22e">getId</span>());
+</span></span><span style="display:flex;"><span>    TaskEntity entity <span style="color:#f92672">=</span> myRepository.<span style="color:#a6e22e">getById</span>(1);
+</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;测试色卡编号结果1===================&#34;</span> <span style="color:#f92672">+</span> entity.<span style="color:#a6e22e">getCardNo</span>());
+</span></span><span style="display:flex;"><span>    TaskEntity update <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> TaskEntity();
+</span></span><span style="display:flex;"><span>    update.<span style="color:#a6e22e">setId</span>(entity.<span style="color:#a6e22e">getId</span>());
 </span></span><span style="display:flex;"><span>    update.<span style="color:#a6e22e">setCardNo</span>(<span style="color:#e6db74">&#34;123&#34;</span>);
-</span></span><span style="display:flex;"><span>    colorCardTakeTaskRepository.<span style="color:#a6e22e">updateById</span>(update);
-</span></span><span style="display:flex;"><span>    takeTaskEntity <span style="color:#f92672">=</span> colorCardTakeTaskRepository.<span style="color:#a6e22e">getById</span>(1);
-</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;测试色卡编号结果1===================&#34;</span> <span style="color:#f92672">+</span> takeTaskEntity.<span style="color:#a6e22e">getCardNo</span>());
+</span></span><span style="display:flex;"><span>    myRepository.<span style="color:#a6e22e">updateById</span>(update);
+</span></span><span style="display:flex;"><span>    entity <span style="color:#f92672">=</span> myRepository.<span style="color:#a6e22e">getById</span>(1);
+</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;测试色卡编号结果1===================&#34;</span> <span style="color:#f92672">+</span> entity.<span style="color:#a6e22e">getCardNo</span>());
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Transactional</span>(rollbackFor <span style="color:#f92672">=</span> Throwable.<span style="color:#a6e22e">class</span>)
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">test2</span>() {
-</span></span><span style="display:flex;"><span>    ColorCardTakeTaskEntity takeTaskEntity <span style="color:#f92672">=</span> colorCardTakeTaskRepository.<span style="color:#a6e22e">getById</span>(1);
-</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;测试色卡编号结果2===================&#34;</span> <span style="color:#f92672">+</span> takeTaskEntity.<span style="color:#a6e22e">getCardNo</span>());
-</span></span><span style="display:flex;"><span>    ColorCardTakeTaskEntity update <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ColorCardTakeTaskEntity();
-</span></span><span style="display:flex;"><span>    update.<span style="color:#a6e22e">setId</span>(takeTaskEntity.<span style="color:#a6e22e">getId</span>());
+</span></span><span style="display:flex;"><span>    TaskEntity entity <span style="color:#f92672">=</span> myRepository.<span style="color:#a6e22e">getById</span>(1);
+</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;测试色卡编号结果2===================&#34;</span> <span style="color:#f92672">+</span> entity.<span style="color:#a6e22e">getCardNo</span>());
+</span></span><span style="display:flex;"><span>    TaskEntity update <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> TaskEntity();
+</span></span><span style="display:flex;"><span>    update.<span style="color:#a6e22e">setId</span>(entity.<span style="color:#a6e22e">getId</span>());
 </span></span><span style="display:flex;"><span>    update.<span style="color:#a6e22e">setCardNo</span>(<span style="color:#e6db74">&#34;456&#34;</span>);
-</span></span><span style="display:flex;"><span>    colorCardTakeTaskRepository.<span style="color:#a6e22e">updateBatchById</span>(Lists.<span style="color:#a6e22e">newArrayList</span>(update));
-</span></span><span style="display:flex;"><span>    takeTaskEntity <span style="color:#f92672">=</span> colorCardTakeTaskRepository.<span style="color:#a6e22e">getById</span>(1);
-</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;测试色卡编号结果2===================&#34;</span> <span style="color:#f92672">+</span> takeTaskEntity.<span style="color:#a6e22e">getCardNo</span>());
+</span></span><span style="display:flex;"><span>    myRepository.<span style="color:#a6e22e">updateBatchById</span>(Lists.<span style="color:#a6e22e">newArrayList</span>(update));
+</span></span><span style="display:flex;"><span>    entity <span style="color:#f92672">=</span> myRepository.<span style="color:#a6e22e">getById</span>(1);
+</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;测试色卡编号结果2===================&#34;</span> <span style="color:#f92672">+</span> entity.<span style="color:#a6e22e">getCardNo</span>());
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h2 id="2根因">2.根因</h2>
 <p>批量操作使用了不同的SqlSession</p>
